@@ -1,0 +1,555 @@
+:root {
+
+    --font-principal: 'PT Sans', sans-serif;
+    --font-nav: 'Poppins', sans-serif;
+    --color-principal: #EC008C;
+}
+
+/*NAV Y HEADER*/
+main {
+  background-color: #151017;
+  width: 100%;
+}
+.nav-bar {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+  padding: 1.5rem 6rem;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+.logo-menu {
+  display: flex; 
+  align-items: center;
+}
+.logo span {
+    color: #fff;
+}
+.nav-list ul {
+  display: flex;
+  list-style: none;
+  color: #fff;
+  margin: 0;
+  font-family: var(--font-nav);
+}
+.nav-list a {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 400;
+  padding: 0;
+  margin: 0 10px; 
+  color: inherit;
+}
+.nav-list a:hover {
+    color: var(--color-principal);
+}
+.nav-item {
+    margin: 0 15px;
+}
+.nav-link {
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+}
+.search-container {
+  margin-left: auto;
+}
+.input-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+.input-search input[type="search"] {
+    width: 22em;
+    padding: .5em 1.5em;
+    outline: none;
+    border: 1px solid #ccc; 
+    border-radius: 1.5em;
+    transition: border-color 0.3s;
+    position: relative;
+}
+.input-search button[type="submit"] {
+  position: absolute; 
+  right: 10px; 
+  background: transparent; 
+  border: none; 
+}
+.input-search button[type="submit"] svg {
+  fill: #000;
+}
+.input-search input:focus {
+    border: .1em solid var(--color-principal);
+}
+.input-search input:focus::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px solid rgba(236, 0, 140, 0.3);
+    border-radius: 6px;
+    pointer-events: none; 
+    opacity: 0;
+    transition: opacity 0.3s; 
+}
+  
+.input-search input:focus::after {
+    opacity: 1;
+}
+.login-discord {
+    display: flex;
+    align-items: center;
+    margin-left: 2em;
+}
+.login-discord .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login a {
+    display: flex;
+    margin-right: 2em;
+    padding: 1em;
+    background-color: var(--color-principal);
+    border-radius: 1.5em;
+    align-items: center;
+}
+.login-discord button {
+    width: 100%;
+    border: none;
+    padding: 10px 2.5rem;
+    border-radius: .1rem;
+    background-color: #5662F6;
+}
+.login-discord button a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.1rem;
+    font-family: var(--font-nav);
+}
+
+.login-discord .login svg {
+    height: 1em;
+    fill: #ffffff;
+}
+  
+
+.mobile-menu-icon {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media screen and (max-width: 1200px) {
+    .nav-bar {
+      padding: 1.5rem 4rem;
+    }
+    .nav-item,
+    .login-discord {
+      display: none;
+    }
+    .mobile-menu-icon {
+      display: block;
+    }
+    .mobile-menu-icon button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .mobile-menu ul {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 0;
+    }
+    .mobile-menu .nav-item {
+      display: block;
+      padding-top: 1.2rem;
+    }
+    .mobile-menu .login-discord {
+      display: block;
+      padding: 1rem 2rem;
+      margin: 0;
+    }
+    .mobile-menu .login-discord button {
+      width: 100%;
+    }
+    .mobile-menu.open {
+      display: block;
+    }
+    a.nav-link {
+      color: #fff;
+      text-transform: uppercase;
+      font-family: var(--font-nav);
+    }
+    a.nav-link:hover {
+      color: var(--color-principal);
+    }
+  
+
+    .mobile-menu form {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+  
+    .mobile-menu .login-discord .login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .mobile-menu .login-discord .login svg {
+      height: 1em;
+      fill: #ffffff;
+    }
+  
+    .mobile-menu .login-discord button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .login a {
+        margin: 0;
+    }
+    .input-search {
+        display: none;
+    }
+    .input-search button[type="submit"] {
+      position: absolute; 
+      left: 300px;
+      background: transparent; 
+      border: none; 
+    }
+}
+@media screen and (max-width: 468px) {
+
+  .mobile-menu input[type="search"] {
+    margin: 0 5em;
+  }
+
+  .input-search {
+    position: relative;
+  }
+  
+  .input-search input[type="search"] {
+    padding-right: 2.5em; 
+  }
+  
+  .input-search button[type="submit"] {
+    position: absolute;
+    left: 210px; 
+    top: 50%;
+    transform: translateY(-50%); 
+    background: transparent;
+    border: none;
+  }
+}
+/* IMAGEN MAIN */
+
+.image-container {
+    position: relative;
+    height: 20em; 
+    overflow: hidden; 
+}
+
+/* SECCIÓN POPULARES */
+
+.seccion-populares {
+    height: 120vh;
+    background-color: #151017;
+    background-size: cover;
+    background-position: center;
+    position: relative; 
+}
+.items-populares {
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8em 0 3.5em 0;
+}
+.items-populares h2 {
+    font-size: 2em;
+    font-family: var(--font-nav);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    font-style: italic;
+    margin: 0;
+}
+.items-populares svg {
+    margin-right: .6em;
+    fill: var(--color-principal);
+}
+.section-populares {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 4em;
+  gap: 5em;
+  justify-content: center;
+
+}
+.img-manga {
+  overflow: hidden;
+}
+.img-manga img {
+  width: 13em;
+  height: 20em;
+  transition: transform 0.3s
+}
+.img-manga img:hover {
+  transform: scale(1.05); 
+  filter: brightness(90%);
+}
+.contenedor-mangas {
+  display: flex;
+}
+.overlay {
+  background: url('/src/img/bc-fondo.jpg'), rgba(0, 0, 0, .7);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  border-radius: 0 .5em .5em 0em;
+  width: 13em;
+  height: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.overlay-1{
+  background: url(/src/img/op-fondo.jpg), rgba(0, 0, 0, .7);
+  background-position: center;
+  background-size: cover;
+}
+
+.overlay-2 {
+  background: url(/src/img/bnha-fondo.jpg), rgba(0, 0, 0, .7);
+  background-position: center;
+  background-size: cover;
+}
+
+.overlay-3 {
+  background: url(/src/img/jjk-fondo.jpg), rgba(0, 0, 0, .7);
+  background-position: center;
+  background-size: cover;
+}
+.overlay-4 {
+  background: url(/src/img/boruto-fondo.jpg), rgba(0, 0, 0, .7);
+  background-position: center;
+  background-size: cover;
+}
+.overlay-5{
+  background: url(/src/img/snk-fondo.jpg), rgba(0, 0, 0, .7);
+  background-position: center;
+  background-size: cover;
+}
+.overlay h3,
+.overlay p,
+.overlay button {
+  position: absolute;
+  text-align: center;
+}
+.overlay h3 {
+  top: 1em;
+  color: var(--color-principal);
+  font-size: 1.2em;
+  font-family: var(--font-nav);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.overlay p {
+  font-size: .8em; 
+  padding: .5em;
+  color: #ccc;
+  font-family: var(--font-nav);
+}
+
+.overlay button {
+  bottom: 20px; 
+  left: 50%; 
+  background-color: #f72585;
+  color: #fff;
+  border: none;
+  padding: .8em 2em;
+  cursor: pointer;
+  font-size: .9em;
+  text-transform: uppercase;
+  border-radius: 2em;
+  transition: transform 0.3s;
+  transform: translateX(-50%); 
+}
+.section-generos {
+  height: 100%;
+  background-color: #151017;
+}
+.generos-titulo h2 {
+  display: flex;
+  font-size: 3em;
+  font-family: var(--font-principal);
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  font-style: italic;
+  justify-content: center;
+  padding-top: 3.5em;
+  font-weight: bold;
+
+}
+.container-generos{
+  width: 18em;
+  height: 22em;
+  background: url('/src/img/drama-romance.jpg'), #BA2B3F;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  border-radius: .6em;
+  position: relative;
+}
+.container-generos:hover {
+  background: url('/src/img/drama-romance.jpg');
+  background-position: center;
+  background-size: cover;
+  transition-delay: 0.5s;
+}
+.action {
+  background: url('/src/img/action-adventure.jpg'), #BA2B3F;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.action:hover {
+  background: url('/src/img/action-adventure.jpg');
+  background-position: center;
+  background-size: cover;
+  transition-delay: 0.5s;
+}
+.martials {
+  background: url('/src/img/martial-arts.jpg'), #BA2B3F;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.martials:hover {
+  background: url('/src/img/martial-arts.jpg');
+  background-position: center;
+  background-size: cover;
+  transition-delay: 0.5s;
+}
+.sports {
+  background: url('/src/img/sports.jpg'), #BA2B3F;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.sports:hover {
+  background: url('/src/img/sports.jpg');
+  background-position: center;
+  background-size: cover;
+  transition-delay: 0.5s;
+}
+.comedy {
+  background: url('/src/img/comedy.jpg'), #BA2B3F;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.comedy:hover {
+  background: url('/src/img/comedy.jpg');
+  background-position: center;
+  background-size: cover;
+  transition-delay: 0.5s;
+}
+.horror {
+  background: url('/src/img/horror.jpg'), #BA2B3F;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.horror:hover {
+  background: url('/src/img/horror.jpg');
+  background-position: center;
+  background-size: cover;
+  transition-delay: 0.5s;
+}
+.family {
+  background: url('/src/img/family.jpg'), #BA2B3F;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.family:hover {
+  background: url('/src/img/family.jpg');
+  background-position: center;
+  background-size: cover;
+  transition-delay: 0.5s;
+}
+.all-genres {
+  background: url('/src/img/anime-wallpaper.jpg'), #BA2B3F;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.all-genres:hover {
+  background: url('/src/img/anime-wallpaper.jpg');
+  background-position: center;
+  background-size: cover;
+  transition-delay: 0.5s;
+}
+.container-generos h3 {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1em 0 0 1.2em;
+  font-size: 1.7em;
+  font-style: italic;
+}
+.container-generos p {
+  position: absolute; 
+  bottom: 1.5em; 
+  left: .8em; 
+  color: #e0e0e0;
+  font-family: var(--font-nav);
+  font-style: italic;
+  font-size: 1.2em;
+  margin: 0; 
+}
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5em;
+  justify-content: center;
+  padding: 4em;
+  height: 100vh;
+  background-color: #151017;
+}
+.container-cards a {
+  text-decoration: none;
+  transition: background 0.3s;
+  transition-delay: 10ms; /* Retraso de 10ms */
+}
+
+.container-cards a:hover {
+  transform: scale(1.04);
+  /* Eliminar el retraso en el :hover */
+  transition-delay: 0s;
+}
+
+.container-cards a::before {
+  /* Establecer la transición de background y el retraso aquí */
+  transition: background 0.3s;
+  transition-delay: 10ms; /* Retraso de 10ms */
+}
