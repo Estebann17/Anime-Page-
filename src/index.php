@@ -1,3 +1,31 @@
+<?php
+
+// Mantener la sesión iniciada
+
+session_start(); 
+
+// Incluye el archivo de conexión
+require_once __DIR__ . "/php/connection.php";
+
+
+include_once 'header.php'; 
+
+// Realiza una consulta de prueba para verificar la conexión
+$sql = "SELECT * FROM Mangas LIMIT 1";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    echo "";
+} else {
+    echo "Error al conectar con la base de datos: " . mysqli_error($conn);
+}
+
+// Cierra la conexión
+mysqli_close($conn);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +33,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Si</title>
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/si/css/normalize.css">
+    <link rel="stylesheet" href="/si/css/style.css">
+    <link rel="stylesheet" href="/si/css/form.css">
+    <link rel="stylesheet" href="/si/css/profile.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -26,90 +56,13 @@
     <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
-    
-  <main>
-    <section class="seccion-principal">
-      <header>
-        <nav class="nav-bar">
-          <div class="logo-menu">
-            <div class="logo">
-              <span>Logo</span>
-            </div>
-            <div class="nav-list">
-              <ul>
-                <li class="nav-item"><a href="#" class="nav-link">Genres</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Popular</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Socials</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Faq</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">+18</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="search-container">
-            <form class="input-search">
-              <input type="search" placeholder="Busca tu manga favorito">
-              <button type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                  <style>svg { fill: #fff; }</style>
-                  <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
-                </svg>
-              </button>
-            </form>
-          </div>
-          <div class="login-discord">
-            <div class="login"> 
-              <a href="#" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                  <style>svg { fill: #ffffff; }</style>
-                  <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                </svg>
-              </a>
-            </div>
-            <button><a href="#">Discord</a></button>
-          </div>
-          <div class="mobile-menu-icon">
-            <button onclick="menuShow()"><img class="icon" src="/src/img/menu.png" alt=""></button>
-          </div>
-        </nav>
-        <div class="mobile-menu">
-          <form class="input-search">
-            <input type="search" placeholder="Busca tu manga favorito">
-            <button type="submit">
-              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                <style>svg { fill: #fff; }</style>
-                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
-              </svg>
-            </button>
-          </form>
-          <ul>
-            <ul>
-              <li class="nav-item"><a href="#" class="nav-link">Genres</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Popular</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Socials</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Faq</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">+18</a></li>
-            </ul>
-          </ul>
-          <div class="login-discord">
-            <div class="login">
-              <a href="#" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                  <style>svg { fill: #ffffff; }</style>
-                  <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                </svg>
-              </a>
-            </div>
-            <button><a href="#">Discord</a></button>
-          </div>
-        </div>
-      </header>
-    </section>
-  </main>
-  
+
+
+
       
       <section class="section-main">
         <div class="image-container">
-          <img class="img-character" src="/src/img/character-anime.png" alt="Character Anime">
+          <img class="img-character" src="http://localhost/si/src/img/character-anime.png" alt="Character Anime">
         </div> 
         <div class="items-main">
           <h1>Vive una experiencia única en el mundo animanga</h1>
@@ -117,7 +70,7 @@
         </div>
         <div class="cards-main">
           <div class="image-container animated-item">
-            <img class="image left-image" src="/src/img/gantz.jpg" alt="Imagen Pequeña 1">
+            <img class="image left-image" src="http://localhost/si/src/img/gantz.jpg" alt="Imagen Pequeña 1">
             <div class="text-container">
               <h2 class="title">Tradicional</h2>
               <span class="price">$15</span>
@@ -125,7 +78,7 @@
             </div>
           </div>
           <div class="image-container animated-item">
-            <img class="image middle-image" src="/src/img/pluto.jpg" alt="Imagen Mediana">
+            <img class="image middle-image" src="http://localhost/si/src/img/pluto.jpg" alt="Imagen Mediana">
             <div class="text-container">
               <h2 class="title">Todo a color</h2>
               <span class="price">$30</span>
@@ -133,7 +86,7 @@
             </div>
           </div>
           <div class="image-container animated-item">
-            <img class="image right-image" src="/src/img/one-piece-1.jpg" alt="Imagen Pequeña 3">
+            <img class="image right-image" src="http://localhost/si/src/img/one-piece-1.jpg" alt="Imagen Pequeña 3">
             <div class="text-container">
               <h2 class="title">Doblaje</h2>
               <span class="price">$50</span>
@@ -165,7 +118,7 @@
         <section class="section-populares">
           <div class="contenedor-mangas">
                 <div class="img-manga">
-                    <a href="#"><img src="/src/img/bc.jpg" alt="Black Clover"></a>
+                    <a href="#"><img src="http://localhost/si/src/img/bc.jpg" alt="Black Clover"></a>
                 </div>
                   <div class="overlay">
                         <h3>Black Clover</h3>
@@ -181,7 +134,7 @@
 
           <div class="contenedor-mangas">
                 <div class="img-manga">
-                    <a href="#"><img src="/src/img/one piece.jpg" alt="One Piece"></a>
+                    <a href="#"><img src="http://localhost/si/src/img/one piece.jpg" alt="One Piece"></a>
                 </div>
                   <div class="overlay overlay-1">
                       <h3>One Piece</h3>
@@ -197,7 +150,7 @@
 
           <div class="contenedor-mangas">
                 <div class="img-manga">
-                    <a href="#"><img src="/src/img/bnha.jpg" alt="Boku no Hero Academia"></a>
+                    <a href="#"><img src="http://localhost/si/src/img/bnha.jpg" alt="Boku no Hero Academia"></a>
                 </div>
                   <div class="overlay overlay-2">
                       <h3>Boku no Hero</h3>
@@ -213,7 +166,7 @@
             
           <div class="contenedor-mangas">
                 <div class="img-manga">
-                    <a href="#"><img src="/src/img/jjk.jpg" alt="Jujutsu Kaisen"></a>
+                    <a href="#"><img src="http://localhost/si/src/img/jjk.jpg" alt="Jujutsu Kaisen"></a>
                 </div>
                   <div class="overlay overlay-3">
                       <h3>Jujutsu Kaisen</h3>
@@ -229,7 +182,7 @@
 
           <div class="contenedor-mangas">
                 <div class="img-manga">
-                    <a href="#"><img src="/src/img/boruto.jpg" alt="Boruto"></a>
+                    <a href="#"><img src="http://localhost/si/src/img/boruto.jpg" alt="Boruto"></a>
                 </div>
                   <div class="overlay overlay-4">
                       <h3>Boruto</h3>
@@ -245,7 +198,7 @@
 
           <div class="contenedor-mangas">
                 <div class="img-manga">
-                    <a href="#"><img src="/src/img/snk.jpg" alt="#"></a>
+                    <a href="#"><img src="http://localhost/si/src/img/snk.jpg" alt="#"></a>
                 </div>
                   <div class="overlay overlay-5">
                       <h3>Shingeki no Kyojin</h3>
@@ -319,7 +272,7 @@
                               <div class="last-updates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/Akametsu.jpg" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/akametsu.jpg" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -340,7 +293,7 @@
                               <div class="last-updates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/homunculus.jpg" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/homunculus.jpg" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -361,7 +314,7 @@
                               <div class="last-uptdates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/dorohedoro.jpg" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/dorohedoro.jpg" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -382,7 +335,7 @@
                               <div class="last-updates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/shoujo-shuumatsu-ryokou.jpg" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/shoujo-shuumatsu-ryokou.jpg" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -403,7 +356,7 @@
                               <div class="last-updates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/Solanin.jpg" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/solanin.jpg" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -424,7 +377,7 @@
                               <div class="last-updates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/innocent.png" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/innocent.png" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -445,7 +398,7 @@
                               <div class="last-updates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/innocent.png" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/innocent.png" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -466,7 +419,7 @@
                               <div class="last-updates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/innocent.png" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/innocent.png" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -487,7 +440,7 @@
                               <div class="last-updates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/innocent.png" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/innocent.png" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -508,7 +461,7 @@
                               <div class="last-updates">
                                 <div class="card-update">
                                   <div class="box-card-update">
-                                    <a href="#"><img src="/src/img/innocent.png" alt="#"></a>
+                                    <a href="#"><img src="http://localhost/si/src/img/innocent.png" alt="#"></a>
                                     <div class="likes-container">
                                       <div class="likes">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -595,54 +548,7 @@
 
 
 
-        <section>
-          <div class="img-anime-footer">
-            <img src="/src/img/anime-wallpaper.jpg" alt="Anime wallpaper">
-          </div>
-        </section>
-
-        <footer>
-          <div class="items-footer"> 
-            <div class="text-footer">
-              <span>Logo</span>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi earum, hic ipsum repudiandae quaerat, fugiat nesciunt est deserunt vero distinctio? Incidunt rerum voluptate vitae, pariatur veritatis est consectetur quaerat.</p>
-            </div>
-            <div class="list-footer">
-              <ul>
-                <li><a href="#" target="_blank">FAQ</a></li>
-                <li><a href="#" target="_blank">Blog & News</a></li>
-                <li><a href="#" target="_blank">Privacy Policy</a></li>
-                <li><a href="#" target="_blank">Terms of Service</a></li>
-                <li><a href="#" target="_blank">Copyrigth</a></li>
-              </ul>
-            </div>
-            <div class="socials-footer">
-              <div class="socials"> 
-                <a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
-                  <style>svg{fill:#fff}</style>
-                  <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/>
-                </svg></a>
-
-                <a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 640 512">
-                  <style>svg{fill:#fff}</style>
-                  <path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/>
-                </svg></a>
-
-                <a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
-                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-                </svg></a>
-
-                <a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 488 512">
-                  <style>svg{fill:#fff}</style>
-                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>
-                </svg></a>
-              </div>
-            </div>
-            <div class="text-copyright">
-              <p>© 2023 Name, All Rights Reserved</p>
-            </div>
-          </div>
-        </footer>
+        <?php include_once 'navbar.php'; ?>
 
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -651,8 +557,8 @@
        
 
 
-        <script src="/src/main.js"></script>
-        <script src="/src/jquery.js"></script>
+        <script src="http://localhost/si/src/js/main.js"></script>
+        <script src="http://localhost/si/src/js/jquery.js"></script>
      
 
 </body>

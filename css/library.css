@@ -1,0 +1,265 @@
+:root {
+
+    --font-principal: 'PT Sans', sans-serif;
+    --font-nav: 'Poppins', sans-serif;
+    --color-principal: #EC008C;
+}
+
+
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1680px;
+    margin: 4em auto 9.8em auto;
+}
+
+/* Estilos para los slides */
+.slider-slide {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+/* Estilos para el contenedor de la imagen con borde */
+.slider-image-container {
+    overflow: hidden;
+    width: 850px;
+    height: 400px;
+    margin: 2em 0 1.5em 0;
+    padding-right: 3em;
+}
+
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: .6em;
+}
+
+/* Estilos para los controles de slider (flechas) */
+.slider-control-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.slider-control {
+    color: #fff;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    margin: 0 10px;
+}
+
+.slider-control:hover {
+    color: var(--color-principal);
+}
+
+/* Estilos para los radio buttons */
+.slider-radio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-radio {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #bbb;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.slider-radio.active {
+    background-color: var(--color-principal);
+    width: 15px;
+    height: 15px;
+}
+
+.featured-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2em;
+    width: 100%;
+}
+.featured-text a {
+    margin-right: 1.5em;
+    text-decoration: none;
+    color: #999;
+}
+.featured-text h2 {
+    color: #fff;
+    font-family: var(--font-nav);
+    font-size: 1.8em;
+    margin: 0;
+}
+
+/* Estilos para el slide item y el texto dentro de la imagen */
+.slide-item {
+    position: relative;
+}
+
+.slide-text {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 3.5em;
+    left: 2em;
+    color: #fff;
+    gap: 1.5em;
+    transition: opacity 0.3s;
+}
+.slide-text p {
+    font-family: var(--font-nav);
+    font-size: .8em;
+    color: #fff;
+}
+
+.genres {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+}
+
+/* Estilos para el contenedor de géneros */
+.genres-container {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+}
+
+/* Estilos para el texto de géneros */
+.genres-text {
+    font-size: 14px;
+    color: #fff;
+    margin-left: 5px;
+}
+
+.image-description {
+    position: absolute;
+    top: 9.5em;
+    left: 1em;
+}
+
+.image-description  {
+    font-family: var(--font-nav);
+    color: #fff;
+    font-size: 2em;
+}
+
+
+/* Mostrar el SVG cuando se haga hover en el slide */
+.slide-item:hover .likes-featured {
+    opacity: 1;
+}
+
+
+/* Estilos para los contenedores manga de la librería */
+
+.section-cards-library {
+    margin-bottom: 20em;
+}
+
+.container-cards-library {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1680px;
+    margin: 0 auto 8em auto;
+    justify-content: center;
+}
+.card-items {
+    max-width: 25em;
+    margin: 1.2em auto;
+    border-radius: .3em;
+    box-shadow: 0 .1em .2em rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+}
+
+.card-content {
+    background-color: #2F3142;
+    padding: 20px;
+    border-radius: 0 0 .5em .5em;
+}
+
+.card-content h2 {
+    font-size: 1.5em;
+    font-family: var(--font-nav);
+    color: #fff;
+    margin: 0;
+    padding-bottom: 1.2em;
+}
+
+.card-content p {
+    font-family: var(--font-nav);
+    font-size: 1em;
+    color: #bbb;
+    margin: 0;
+    padding-bottom: 1.2em;
+}
+
+.btn-library-cards {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: .8em;
+    font-size: 1em;
+    color: #fff;
+    background-color: var(--color-principal);
+    border: none;
+    border-radius: .3em;
+    cursor: pointer;
+    font-family: var(--font-nav);
+}
+.btn-library-cards svg {
+    margin-right: 7.5em;
+}
+
+.btn-library-cards:hover {
+    background-color: #DC0484;
+}
+
+
+/* Estilos para el texto dentro de la imagen */
+.image-text {
+    position: absolute;
+    left: 50%;
+    top: 24%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    z-index: 1;
+}
+.image-text h2 {
+    font-family: var(--font-nav);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+ /* Estilos para la superposición (oscurecimiento) de la imagen */
+ .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45.9%;
+    background-color: rgba(0, 0, 0, .6); /* Color de fondo semitransparente */
+}
